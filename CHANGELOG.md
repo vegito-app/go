@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.3](https://github.com/vegito-app/go/compare/v0.0.2...v0.0.3) (2026-05-03)
+
+
+### Features
+
+* **firestore:** add function to check for AlreadyExists error ([20c82a3](https://github.com/vegito-app/go/commit/20c82a32680bcb8f8b5a36151db33cd52575eaf2))
+
 ### [0.0.2](https://github.com/vegito-app/go/compare/v0.0.1...v0.0.2) (2026-05-03)
 
 ### [0.0.1](https://github.com/vegito-app/go/compare/v0.0.0...v0.0.1) (2026-05-03)
