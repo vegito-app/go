@@ -1,0 +1,59 @@
+name: Vegito Go Release
+on:
+  push:
+    branches: [main]
+permissions:
+  id-token: write
+  contents: write
+jobs:
+  version-changelog:
+    uses: vegito-app/local/.github/workflows/version-changelog.yml@main
+    secrets: inherit
+#   version-metadata:
+#     needs: version-changelog
+#     strategy:
+#       matrix:
+#         environment: [dev, staging, prod]
+#     uses: vegito-app/local/.github/workflows/version-metadata.yml@main
+#     with:
+#       environment: ${{ matrix.environment }}
+#       version: ${{ needs.version-changelog.outputs.version }}
+#       changelog: ${{ needs.version-changelog.outputs.changelog }}
+#       env_bucket_map: ${{ inputs.env_bucket_map }}
+#       release_bucket_prefix: ${{ inputs.release_bucket_prefix }}
+#     secrets: inherit
+  tests:
+    name: Run Functional Tests
+    needs: [version-changelog]
+    uses: ./.github/workflows/go-tests.yml
+    with:
+      version: ${{ needs.version-changelog.outputs.version }}
+      env_bucket_map: ${{ inputs.env_bucket_map }}
+      release_bucket_prefix: ${{ inputs.release_bucket_prefix }}
+    secrets: inherit
+  # release:
+  #   name: Create Consolidated Release Notes
+  #   needs: [tests, version-changelog]
+  #   uses: vegito-app/local/.github/workflows/application-release-metadata.yml@main
+  #   with:
+  #     environment: ${{ inputs.environment }}
+  #     version: ${{ needs.version-changelog.outputs.version }}
+  #     changelog: ${{ needs.version-changelog.outputs.changelog }}
+  #     env_bucket_map: ${{ inputs.env_bucket_map }}
+  #     release_bucket_prefix: ${{ inputs.release_bucket_prefix }}
+    # secrets: inherit
+  # finalize:
+  #   name: Finalize Release
+  #   needs: [release, version-changelog]
+  #   uses: vegito-app/local/.github/workflows/version-finalize.yml@main
+  #   with:
+  #     environment: ${{ inputs.environment }}
+  #     env_bucket_map: ${{ inputs.env_bucket_map }}
+  #     release_bucket_prefix: ${{ inputs.release_bucket_prefix }}
+  #     version: ${{ needs.version-changelog.outputs.version }}
+  #     changelog: ${{ needs.version-changelog.outputs.changelog }}
+  #     commit_sha: ${{ needs.version-changelog.outputs.commit_sha }}
+  #   secrets:
+  #     GOOGLE_CLOUD_PROJECT_ID: ${{ secrets.RELEASE_READER_GOOGLE_CLOUD_PROJECT_ID }}
+  #     GOOGLE_CLOUD_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.RELEASE_READER_GOOGLE_CLOUD_WORKLOAD_IDENTITY_PROVIDER }}
+  #     GOOGLE_CLOUD_SERVICE_ACCOUNT_EMAIL: ${{ secrets.RELEASE_READER_GOOGLE_CLOUD_SERVICE_ACCOUNT_EMAIL }}

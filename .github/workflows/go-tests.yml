@@ -1,0 +1,40 @@
+name: Vegito Go Tests
+on:
+  workflow_call:
+    inputs:
+      version:
+        required: true
+        type: string
+      env_bucket_map:
+        description: "YAML mapping of environment to release bucket"
+        required: false
+        type: string
+        default: |
+          dev: vegito-app-dev-github-actions-ci-artifacts-private
+          staging: vegito-app-staging-github-actions-ci-artifacts-private
+          prod: vegito-app-prod-github-actions-ci-artifacts-private
+      release_bucket_prefix:
+        required: false
+        type: string
+        default: ${{ github.repository }}
+    # secrets:
+    #   GOOGLE_CLOUD_PROJECT_ID:
+    #     required: true
+    #   GOOGLE_CLOUD_WORKLOAD_IDENTITY_PROVIDER:
+    #     required: true
+    #   GOOGLE_CLOUD_SERVICE_ACCOUNT_EMAIL:
+        # required: true
+permissions:
+  id-token: write
+  contents: read
+jobs:
+  tests:
+    runs-on: self-hosted
+    name: Run Go Unit Tests
+    steps:
+      - name: Run Tests
+        run: |
+          echo "Running tests"
+          docker run --rm -v ${PWD}:${PWD} -w ${PWD} \
+          docker.io/dbndev/vegito-local-public:builder-latest \
+          go test -v ./...
