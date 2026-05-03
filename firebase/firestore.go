@@ -7,4 +7,8 @@ import (
 
 func FirestoreIsNotFound(err error) bool {
 	return status.Code(err) == codes.NotFound
+
+}
+func FirestoreIsAlreadyExists(err error) bool {
+	return status.Code(err) == codes.AlreadyExists
 }
