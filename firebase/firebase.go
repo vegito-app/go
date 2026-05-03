@@ -18,15 +18,23 @@ type App struct {
 	*firebase.App
 }
 
-func NewApp(ctx context.Context) (*App, error) {
-
-	var opts []option.ClientOption
-
+func NewApp(ctx context.Context, opts ...option.ClientOption) (*App, error) {
 	projectID := config.GetString(projectIDconfig)
 	firebasseConfig := &firebase.Config{
 		ProjectID: projectID,
 	}
 
+	app, err := firebase.NewApp(ctx, firebasseConfig, opts...)
+	if err != nil {
+		return nil, fmt.Errorf("firebase new app: %w", err)
+	}
+	return &App{
+		App: app,
+	}, nil
+}
+
+func NewAppAdmin(ctx context.Context) (*App, error) {
+	var opts []option.ClientOption
 	client, err := secretmanager.NewClient(ctx)
 	if err != nil {
 		return nil, err
@@ -48,13 +56,11 @@ func NewApp(ctx context.Context) (*App, error) {
 		}
 		opts = append(opts, option.WithCredentialsJSON(firebaseAdminSDKserviceAccount.Payload.Data))
 	}
-	app, err := firebase.NewApp(ctx, firebasseConfig, opts...)
+	app, err := NewApp(ctx, opts...)
 	if err != nil {
 		return nil, fmt.Errorf("firebase new app: %w", err)
 	}
-	return &App{
-		App: app,
-	}, nil
+	return app, nil
 }
 
 type AuthClient struct {
