@@ -1,12 +1,8 @@
 package http
 
 import (
-	"context"
-	"io"
 	"net/http"
 	"slices"
-
-	"github.com/rs/zerolog/log"
 )
 
 // Type middleware : une fonction qui prend un http.Handler et retourne un http.Handler

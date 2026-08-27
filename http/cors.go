@@ -1,5 +1,8 @@
 package http
 
+import (
+	"net/http"
+)
 
 // CORSMiddleware définit un middleware pour gérer le CORS
 func CORSMiddleware(next http.Handler) http.Handler {

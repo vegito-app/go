@@ -1,8 +1,13 @@
 package http
 
 import (
+	"context"
+	"io"
+	"net/http"
+
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promauto"
+	"github.com/rs/zerolog/log"
 )
 
 type RequestMetrics struct {

@@ -2,10 +2,12 @@ package http
 
 import (
 	"context"
+	"fmt"
 	"net/http"
 	"os"
 	"os/signal"
 	"time"
+
 	"github.com/spf13/viper"
 
 	"github.com/rs/zerolog/log"
@@ -91,7 +93,7 @@ func StartAPI(ctx context.Context, mux http.Handler, metricsProbe Metrics) error
 		MetricsMiddleware(metricsProbe),
 		RequestBodyMiddleware,
 		AuditMiddleware,
-		CorsMiddleware,
+		CORSMiddleware,
 	)
 	port := config.GetString(portConfig)
 	if err := ListenAndServe(ctx, "0.0.0.0:"+port, handler); err != nil {

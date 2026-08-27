@@ -7,7 +7,7 @@ import (
 	"github.com/rs/zerolog/log"
 )
 
-func auditMiddleware(next http.Handler) http.Handler {
+func AuditMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 
 		requestTime := r.Context().Value(requestTimeKey).(int64)
