@@ -6,9 +6,21 @@ import (
 	"os"
 	"os/signal"
 	"time"
+	"github.com/spf13/viper"
 
 	"github.com/rs/zerolog/log"
 )
+
+var config = viper.New()
+
+const (
+	portConfig = "port"
+)
+
+func init() {
+	config.AutomaticEnv()
+	config.SetDefault(portConfig, "8080")
+}
 
 func ListenAndServe(ctx context.Context, addr string, handler http.Handler) error {
 	server := &http.Server{
@@ -70,4 +82,21 @@ func shutdown(ctx context.Context, server *http.Server) {
 		return
 	}
 	log.Info().Msg("HTTP server has gracefully shutdown")
+}
+
+// StartAPI creates a new instance of apiv1.Service.
+func StartAPI(ctx context.Context, mux http.Handler, metricsProbe Metrics) error {
+	handler := ApplyMiddleware(
+		mux,
+		MetricsMiddleware(metricsProbe),
+		RequestBodyMiddleware,
+		AuditMiddleware,
+		CorsMiddleware,
+	)
+	port := config.GetString(portConfig)
+	if err := ListenAndServe(ctx, "0.0.0.0:"+port, handler); err != nil {
+		return fmt.Errorf("HTTP listenAndServe: %w", err)
+	}
+	fmt.Print("See you the next time ! Bye")
+	return nil
 }
