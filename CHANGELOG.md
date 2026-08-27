@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/vegito-app/go/compare/v0.0.3...v0.0.4) (2026-08-27)
+
+
+### Features
+
+* **devcontainer:** ajouter le fichier de configuration pour le conteneur de développement Go ([05d60c3](https://github.com/vegito-app/go/commit/05d60c36f768bf458801bccbd6990c7e048bc22d))
+* **http:** add middleware for auditing, CORS, and metrics handling ([5f8707f](https://github.com/vegito-app/go/commit/5f8707f801c9043ed2aef708e9e535fc3d7c17d4))
+
 ### [0.0.3](https://github.com/vegito-app/go/compare/v0.0.2...v0.0.3) (2026-05-03)
 
 
