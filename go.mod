@@ -3,6 +3,7 @@ module github.com/vegito-app/go
 go 1.26.3
 
 require (
+	cloud.google.com/go/pubsub/v2 v2.6.2
 	cloud.google.com/go/secretmanager v1.21.0
 	firebase.google.com/go/v4 v4.21.0
 	github.com/GoogleCloudPlatform/functions-framework-go v1.9.2
@@ -83,6 +84,7 @@ require (
 	github.com/tklauser/go-sysconf v0.4.0 // indirect
 	github.com/tklauser/numcpus v0.12.0 // indirect
 	github.com/yusufpapurcu/wmi v1.2.4 // indirect
+	go.opencensus.io v0.24.0 // indirect
 	go.opentelemetry.io/auto/sdk v1.2.1 // indirect
 	go.opentelemetry.io/contrib/detectors/gcp v1.46.0 // indirect
 	go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.71.0 // indirect
