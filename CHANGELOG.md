@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/vegito-app/go/compare/v0.0.4...v0.0.5) (2026-08-27)
+
+
+### Features
+
+* **pubsub:** ajouter un client de publication PubSub avec gestion des métriques ([24ab57c](https://github.com/vegito-app/go/commit/24ab57c1bf86fd8af0f76d04418a64991b235e8f))
+
 ### [0.0.4](https://github.com/vegito-app/go/compare/v0.0.3...v0.0.4) (2026-08-27)
 
 
