@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.8](https://github.com/vegito-app/go/compare/v0.0.7...v0.0.8) (2026-08-28)
+
+
+### Features
+
+* **metrics:** ajouter un service de métriques avec gestionnaire HTTP ([1d93208](https://github.com/vegito-app/go/commit/1d93208db4ecdd91dd7e1f537f6198c31770f866))
+
 ### [0.0.7](https://github.com/vegito-app/go/compare/v0.0.6...v0.0.7) (2026-08-28)
 
 
