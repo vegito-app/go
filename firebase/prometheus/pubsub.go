@@ -13,12 +13,12 @@ type PubSubMetrics struct {
 func NewPubSubMetrics(reg prometheus.Registerer) *PubSubMetrics {
 	hm := &PubSubMetrics{
 		messagePublishSuccess: promauto.With(reg).NewCounter(prometheus.CounterOpts{
-			Name: "stripe_published_total",
-			Help: "Stripe published total",
+			Name: "pubsub_published_total",
+			Help: "PubSub published total",
 		}),
 		messagePublishFailure: promauto.With(reg).NewCounter(prometheus.CounterOpts{
-			Name: "stripe_published_failed_total",
-			Help: "Stripe published failed total",
+			Name: "pubsub_published_failed_total",
+			Help: "PubSub published failed total",
 		}),
 	}
 	return hm
