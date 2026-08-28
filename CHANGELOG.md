@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.7](https://github.com/vegito-app/go/compare/v0.0.6...v0.0.7) (2026-08-28)
+
+
+### Bug Fixes
+
+* **pubsub:** corriger les noms des métriques de publication pour PubSub ([e615fd9](https://github.com/vegito-app/go/commit/e615fd9a37ae44babb711ff54032864a423983e4))
+
 ### [0.0.6](https://github.com/vegito-app/go/compare/v0.0.5...v0.0.6) (2026-08-27)
 
 
