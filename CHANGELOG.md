@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.9](https://github.com/vegito-app/go/compare/v0.0.8...v0.0.9) (2026-09-03)
+
+
+### Features
+
+* **metrics:** ajouter des métriques Firestore avec des compteurs pour les opérations de lecture et d'écriture ([3540e09](https://github.com/vegito-app/go/commit/3540e094c5124c21b5c007609e6074c08c0d21db))
+
+
+### Bug Fixes
+
+* **tests:** mettre à jour l'image Docker utilisée pour les tests Go ([6b0b873](https://github.com/vegito-app/go/commit/6b0b87375962da96214bb007618268dd58a6931c))
+
 ### [0.0.8](https://github.com/vegito-app/go/compare/v0.0.7...v0.0.8) (2026-08-28)
 
 
