@@ -36,5 +36,5 @@ jobs:
         run: |
           echo "Running tests"
           docker run --rm -v ${PWD}:${PWD} -w ${PWD} \
-          docker.io/dbndev/vegito-local-public:builder-latest \
+          docker.io/dbndev/vegito-public:trixie-debian-golang-latest \
           go test -v ./...
