@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.10](https://github.com/vegito-app/go/compare/v0.0.9...v0.0.10) (2026-09-04)
+
+
+### Bug Fixes
+
+* **metrics:** corriger la méthode de gestion des requêtes pour le point de terminaison /metrics ([19f43be](https://github.com/vegito-app/go/commit/19f43be797985c48a11500f1b0da07d3ff53c419))
+
 ### [0.0.9](https://github.com/vegito-app/go/compare/v0.0.8...v0.0.9) (2026-09-03)
 
 
