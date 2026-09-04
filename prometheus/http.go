@@ -20,7 +20,7 @@ func NewMetricsService(mux *http.ServeMux, metricsProvider Metrics) (*MetricsSer
 		metrics: metricsProvider,
 	}
 
-	mux.Handle("/metrics", promhttp.HandlerFor(metricsProvider, promhttp.HandlerOpts{}))
+	mux.Handle("GET /metrics", promhttp.HandlerFor(metricsProvider, promhttp.HandlerOpts{}))
 
 	return service, nil
 }
